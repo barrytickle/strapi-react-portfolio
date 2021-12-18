@@ -1,0 +1,22 @@
+type StringFilterInput {
+	and: [String]
+	or: [String]
+	not: StringFilterInput
+	eq: String
+	ne: String
+	startsWith: String
+	endsWith: String
+	contains: String
+	notContains: String
+	containsi: String
+	notContainsi: String
+	gt: String
+	gte: String
+	lt: String
+	lte: String
+	null: Boolean
+	notNull: Boolean
+	in: [String]
+	notIn: [String]
+	between: [String]
+}
