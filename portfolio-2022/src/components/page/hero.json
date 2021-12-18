@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_page_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "address-card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "LargeHeader": {
+      "type": "boolean"
+    },
+    "Title": {
+      "type": "string"
+    }
+  }
+}
