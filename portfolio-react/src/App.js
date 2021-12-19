@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React from "react";
+import { connect } from "react-redux";
+import getPages from "./api/getPages";
+import getAllPages from "./actions/pages";
+import PageContent from "./layouts/PageContent";
+import { buildSchema } from "graphql";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    console.log("APP PROPS", this.props);
+    if (this.props.page === 404) {
+      return <h1>Error: Page not found</h1>;
+    } else {
+      return <PageContent />;
+    }
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  const { pages } = state;
+  return { page: pages };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getAllPages: (response) => dispatch(getAllPages(response)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
